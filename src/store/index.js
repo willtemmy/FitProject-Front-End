@@ -42,9 +42,72 @@ const initial_state = {
   ],
 };
 
+const deleteSession = (id, list) => {
+  return list.filter((ses) => ses.id !== id);
+};
+
+const updateWorkout = (id, workout_info, list) => {
+  const library = [...list];
+  const workout = library.find((itm) => itm.id === id);
+  workout.name = workout_info.name;
+  workout.activities = workout_info.activities;
+
+  return library;
+};
+
 const workoutReducer = (state = initial_state, action) => {
   switch (action.type) {
+    case "ADD_WORKOUT_TO_LIBRARY":
+      return {
+        ...state,
+        workout_library: [action.payload, ...state.workout_library],
+      };
+
+    case "ADD_WORKOUT_TO_HISTORY":
+      return {
+        ...state,
+        workout_history: [action.payload, ...state.workout_library],
+      };
+
+    case "DELETE_WORKOUT_FROM_LIBRARY":
+      return {
+        ...state,
+        workout_library: deleteSession(action.payload, state.workout_library),
+      };
+
+    case "DELETE_WORKOUT_FROM_HISTORY":
+      return {
+        ...state,
+        workout_history: deleteSession(action.payload, state.workout_history),
+      };
+
+    case "UPDATE_LIBRARY":
+      return {
+        ...state,
+        workout_library: action.payload,
+      };
+
+    case "UPDATE_HISTORY":
+      return {
+        ...state,
+        workout_history: action.payload,
+      };
+
+    case "UPDATE_WORKOUT":
+      return {
+        ...state,
+        workout_library: updateWorkout(
+          action.payload.id,
+          action.payload.workout_info,
+          state.workout_library
+        ),
+      };
+
+    default:
+      return state;
   }
 };
 
 const store = createStore(workoutReducer);
+
+export default store;
