@@ -34,16 +34,17 @@ const initial_state = {
     },
   ],
   workout_history: [
-    { id: 1, workoutId: 1, duration: 33, sets: 5 },
-    { id: 2, workoutId: 2, duration: 3, sets: 4 },
-    { id: 3, workoutId: 3, duration: 133, sets: 10 },
-    { id: 4, workoutId: 2, duration: 23, sets: 2 },
-    { id: 5, workoutId: 3, duration: 53, sets: 4 },
+    // { id: 1, workoutId: 1, duration: 33, sets: 5, date: "1/1/2010" },
+    // { id: 2, workoutId: 2, duration: 3, sets: 4, date: "1/1/2010" },
+    // { id: 3, workoutId: 3, duration: 133, sets: 10, date: "1/1/2010" },
+    // { id: 4, workoutId: 2, duration: 23, sets: 2, date: "1/1/2010" },
+    // { id: 5, workoutId: 3, duration: 53, sets: 4, date: "1/1/2010" },
   ],
 };
 
 const deleteSession = (id, list) => {
-  return list.filter((ses) => ses.id !== id);
+  const newList = list.filter((ses) => ses.id != id);
+  return newList;
 };
 
 const updateWorkout = (id, workout_info, list) => {
@@ -66,7 +67,7 @@ const workoutReducer = (state = initial_state, action) => {
     case "ADD_WORKOUT_TO_HISTORY":
       return {
         ...state,
-        workout_history: [action.payload, ...state.workout_library],
+        workout_history: [action.payload, ...state.workout_history],
       };
 
     case "DELETE_WORKOUT_FROM_LIBRARY":
