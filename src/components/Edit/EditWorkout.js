@@ -108,7 +108,7 @@ const EditWorkout = (props) => {
                 removeActivity(itm.id);
               }}
             >
-              -
+              X
             </button>
             <div>
               <h2>{itm.name}</h2>

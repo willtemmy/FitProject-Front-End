@@ -5,6 +5,73 @@ import styles from "./WorkoutInfo.module.css";
 import Modal, { CloseIcon } from "../UI/Modal";
 
 const WorkoutInfo = (props) => {
+  const [exercises, setExercises] = useState([]);
+  // const [exerciseName, setExerciseName] = useState("");
+  // const [sets, setSets] = useState("");
+  // const [reps, setReps] = useState("");
+ 
+
+  // useEffect(() => {
+  //   const fetchExercises = async () => {
+  //     try {
+  //       const response = await fetch('http://localhost:9292/exercise');
+  //       const data = await response.json();
+  //       setExercises(data);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
+
+  //   fetchExercises();
+  // }, []);
+
+  // const filteredExercises = exercises.filter(
+  //   (exercise) =>
+  //     exercise.exercise_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+  //     exercise.exercise_type.toLowerCase().includes(searchTerm.toLowerCase())
+  // );
+
+  // const handleDeleteWorkout = (workoutId) => {
+  //   fetch(`http://localhost:9292/workouts/${workoutId}`, {
+  //     method: "DELETE",
+  //   })
+  //     .then((response) => {
+  //       if (response.ok) {
+  //         console.log("Workout deleted");
+  //         // Remove the deleted workout from the state
+  //         setWorkouts((prevPlans) =>
+  //           prevPlans.filter((plan) => plan.workout_id !== workoutId)
+  //         );
+  //       } else {
+  //         throw new Error("Error deleting workout plan");
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //       if (error.response) {
+  //         console.log("Response status:", error.response.status);
+  //         console.log("Response body:", error.response.body);
+  //       }
+  //     });      
+  // };
+  // fetch("http://localhost:9292/workouts", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(workoutPlan),
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setExerciseName("");
+  //       setSets("");
+  //       setReps("");
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error:", error);
+  //     });
+  // };
+
   const [delWorkModal, setDelWorkModal] = useState(false);
   const workout = useSelector((state) => state.workout_library).find(
     (itm) => itm.id == props.workoutId
@@ -65,34 +132,7 @@ const WorkoutInfo = (props) => {
           </div>
         ))}
       </div>
-      <div className={styles.history}>
-        <div>
-          <h2>{recentReps}</h2>
-          <p>Recent Sets</p>
-        </div>
-        <div>
-          <h2>{workoutAvg.toFixed(2)}</h2>
-          <p>Avg. Minutes</p>
-        </div>
-      </div>
       <div className={styles.flex}>
-        <button
-          onClick={() => {
-            props.changeView("sta" + props.workoutId);
-          }}
-          className={styles.hisButton}
-        >
-          History
-        </button>
-
-        <button
-          onClick={() => {
-            props.changeView("wss" + props.workoutId);
-          }}
-          className={styles.startButton}
-        >
-          Start Workout
-        </button>
         <div className={styles.flexer}>
           <button
             className={styles.delButton}
@@ -106,6 +146,7 @@ const WorkoutInfo = (props) => {
             className={styles.editButton}
             onClick={() => {
               props.changeView("ewo" + props.workoutId);
+              // () => handleDeleteWorkout(workout_id)
             }}
           >
             Edit Workout

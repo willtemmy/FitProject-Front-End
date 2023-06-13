@@ -4,12 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import "./index.css";
 import Home from "./components/Home/Home";
 import FloatingButtons from "./components/FloatingButtons";
-import History from "./components/History/History";
+// import History from "./components/History/History";
 import Library from "./components/Home/Library";
 import EditWorkout from "./components/Edit/EditWorkout";
 import WorkoutInfo from "./components/WorkoutInfo/WorkoutInfo";
-import WorkoutSession from "./components/WorkoutSession/WorkoutSession";
-import WorkoutStats from "./components/WokoutStats/WorkoutStats";
+// import WorkoutSession from "./components/WorkoutSession/WorkoutSession";
+// import WorkoutStats from "./components/WokoutStats/WorkoutStats";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -53,13 +53,13 @@ export default function App() {
             }}
           />
         )}
-        {view === "History" && (
+        {/* {view === "History" && (
           <History
             changeView={(view) => {
               setView(view);
             }}
           />
-        )}
+        )} */}
         {view === "Library" && (
           <Library
             changeView={(view) => {
@@ -75,9 +75,9 @@ export default function App() {
             }}
           />
         )}
-        {view.substring(0, 3) === "wos" && (
+        {/* {view.substring(0, 3) === "wos" && (
           <WorkoutSession workoutId={view.substring(3)} />
-        )}
+        )} */}
         {view.substring(0, 3) === "ewo" && (
           <EditWorkout
             workoutId={view.substring(3)}
@@ -95,18 +95,18 @@ export default function App() {
           />
         )}
 
-        {view.substring(0, 3) === "wss" && (
+        {/* {view.substring(0, 3) === "wss" && (
           <WorkoutSession
             changeView={(view) => {
               setView(view);
             }}
             workoutId={view.substring(3)}
           />
-        )}
+        )} */}
 
-        {view.substring(0, 3) === "sta" && (
+        {/* {view.substring(0, 3) === "sta" && (
           <WorkoutStats workoutId={view.substring(3)} />
-        )}
+        )} */}
       </div>
     </>
   );

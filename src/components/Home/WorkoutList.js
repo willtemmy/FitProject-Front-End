@@ -3,6 +3,18 @@ import styles from "./Home.module.css";
 import { useSelector } from "react-redux";
 
 const WorkoutList = (props) => {
+  // const [workouts, setWorkouts] = useState([]);
+
+  // useEffect(() => {
+  //   fetch("http://localhost:9292/workouts")
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       setWorkouts(data);
+  //     });
+  // }, []);
+
+
   const library = useSelector((state) => state.workout_library);
 
   return (

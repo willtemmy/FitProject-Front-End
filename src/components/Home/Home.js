@@ -5,7 +5,7 @@ import WorkoutList from './WorkoutList'
 const Home = (props) => {
   return (
     <div className={styles.home}>
-      <h1>Welcome Back,</h1>
+      <h1>Workout!</h1>
       <p>Here's what you have for the day</p>
 
       <WorkoutList changeView={props.changeView}/>

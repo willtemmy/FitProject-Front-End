@@ -24,27 +24,9 @@ const FloatingButtons = (props) => {
           >
             Library
           </button>
-
-          <button
-            onClick={() => {
-              setMoreOpts(false);
-              props.changeView("History");
-            }}
-          >
-            History
-          </button>
-          <button
-            onClick={() => {
-              setMoreOpts(false);
-              props.changeView("Store");
-            }}
-          >
-            Store
-          </button>
         </div>
       )}
       <div className="flex">
-        <button className="addB">+</button>
         <button
           onClick={() => {
             setMoreOpts((prev) => !prev);
